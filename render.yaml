@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: campuscare-student-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    plan: free

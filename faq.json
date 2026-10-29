@@ -1,0 +1,77 @@
+[
+  {
+    "tag": "greeting",
+    "questions": ["hi", "hello", "hey", "namaste", "good morning", "hii", "hello piyush"],
+    "answer": "Namaste! I am your CampusCare Student Assistant. Ask me about admissions, fees, exams, timetable, scholarships, library, study plans, attendance, or placements."
+  },
+  {
+    "tag": "admission",
+    "questions": ["how to take admission", "admission process", "admission kaise le", "admission ke liye kya karna hai", "last date of admission", "eligibility for admission"],
+    "answer": "Admission is done through the online portal. Fill the form, upload marksheets and ID proof, pay the form fee and visit the office for document verification. Eligibility depends on the course."
+  },
+  {
+    "tag": "fees",
+    "questions": ["what is the fee", "fees structure", "course fees", "fees kitni hai", "fees kab bharni hai", "how to pay fees", "fee payment"],
+    "answer": "Fees can be paid online through the college portal (UPI, debit card or net banking) or by DD at the accounts section. Check the notice board for the latest course-wise fee structure."
+  },
+  {
+    "tag": "exam",
+    "questions": ["exam date", "exam schedule", "when are exams", "exam kab hai", "exam form kab bharna hai", "hall ticket", "result kab aayega"],
+    "answer": "Exam dates, hall tickets and results are published on the university website and the college notice board. Exam forms must be filled before the last date announced by the exam section."
+  },
+  {
+    "tag": "timetable",
+    "questions": ["timetable", "class schedule", "lecture timing", "time table kaha milega", "classes kab se shuru hai", "college timing"],
+    "answer": "College timing is 9:30 AM to 4:30 PM, Monday to Saturday. Class-wise timetables are displayed on the department notice board and uploaded on the student portal."
+  },
+  {
+    "tag": "scholarship",
+    "questions": ["scholarship", "scholarship kaise milegi", "how to apply for scholarship", "mahadbt scholarship", "scholarship form", "freeship"],
+    "answer": "Scholarship applications are filled on the MahaDBT / government portal with income certificate, caste certificate (if applicable) and marksheets. Submit the printout to the scholarship section for verification."
+  },
+  {
+    "tag": "library",
+    "questions": ["library timing", "library kab khulti hai", "how to issue books", "library card", "book issue", "how many books can i borrow"],
+    "answer": "The library is open 9:00 AM to 5:00 PM on working days. Students can issue 2 books at a time for 7 days using the library card. Late return may attract a small fine."
+  },
+  {
+    "tag": "placement",
+    "questions": ["placement", "campus placement", "job kaise milegi", "placement cell", "internship", "career guidance"],
+    "answer": "The Training and Placement Cell conducts aptitude training, mock interviews and campus drives. Keep your resume updated and register with the placement cell for upcoming drives and internships."
+  },
+  {
+    "tag": "study_plan",
+    "questions": ["study plan", "make a study plan", "make a 7-day exam study plan", "help me make an exam study plan", "exam preparation routine", "how to study for exams", "revision schedule"],
+    "answer": "Here is a practical 7-day exam study plan:\n1. Days 1-2: Review core concepts and high-weightage topics.\n2. Days 3-4: Work through formulas, derivations, and practice problems.\n3. Days 5-6: Solve past 3 years' university question papers under timed conditions.\n4. Day 7: Light revision of short notes, formulas, and get 8 hours of sleep."
+  },
+  {
+    "tag": "attendance_info",
+    "questions": ["attendance rule", "attendance calculator", "minimum attendance required", "how to calculate attendance", "attendance percentage", "classes attendance"],
+    "answer": "The minimum recommended attendance is 75% for lectures and practicals. Formula: Attendance (%) = (Classes attended ÷ Total classes held) × 100. You can check the Attendance Calculator tab in the sidebar to calculate exact figures!"
+  },
+  {
+    "tag": "programming",
+    "questions": ["explain inheritance in java", "inheritance in java", "java programming", "python tutorial", "programming help", "coding questions"],
+    "answer": "In Java, inheritance allows a child class to inherit fields and methods from a parent class using the 'extends' keyword. Example:\nclass Animal { void sound() { System.out.println(\"Sound\"); } }\nclass Dog extends Animal { void bark() { System.out.println(\"Bark\"); } }\nCheck the Resources tab in the sidebar for complete guides on MDN and GeeksforGeeks!"
+  },
+  {
+    "tag": "project_report",
+    "questions": ["help with my project report", "how do i write a good project report", "project report", "project report format", "synopsis format", "final year project report"],
+    "answer": "Guidelines for a standout project report:\n1. Abstract & Problem Statement: Clear 1-page summary.\n2. System Architecture: Flowcharts, ER diagrams, and UML.\n3. Technology Stack: Why you chose Python, Flask, React, etc.\n4. Implementation & Modules: Core logic and code structure.\n5. Output & Screenshots: Clear pictures of working features.\n6. Conclusion & Future Scope: Potential next steps."
+  },
+  {
+    "tag": "career_support",
+    "questions": ["placement interview questions", "common placement interview questions", "career support", "help me prepare for placements and interviews", "interview tips", "resume preparation"],
+    "answer": "Placement Preparation Checklist:\n1. Core Subjects: Revise OOPs concepts, DBMS queries, OS scheduling, and Data Structures.\n2. Coding Practice: Solve array, string, and linked list problems on LeetCode/GeeksforGeeks.\n3. Resume: Keep it 1 page, spotlight your projects, tech stack, and GitHub links.\n4. HR Round: Practice introducing yourself and explaining why you want to join the company."
+  },
+  {
+    "tag": "concentration",
+    "questions": ["how can i improve my concentration while studying", "improve study concentration", "focus on study", "exam anxiety", "study tips"],
+    "answer": "To boost concentration:\n1. Use the Pomodoro Technique: 25 minutes of deep focus + 5 minutes break.\n2. Put your phone on 'Do Not Disturb' in another room.\n3. Keep a study log and tick off small completed goals.\n4. Drink water and take quick walks during breaks to keep energy high."
+  },
+  {
+    "tag": "thanks",
+    "questions": ["thanks", "thank you", "dhanyavad", "shukriya", "bye", "ok thanks", "thank you so much"],
+    "answer": "You are welcome! Feel free to ask if you need any other help with your studies, exams, or college life."
+  }
+]

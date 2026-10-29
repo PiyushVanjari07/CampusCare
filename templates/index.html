@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CampusCare — Student Support Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --ink: #19233b;
+  --muted: #75809a;
+  --line: #e7ebf4;
+  --primary: #5146e5;
+  --primary-hover: #4338ca;
+  --purple: #8b5cf6;
+  --green: #159b72;
+  --shadow: 0 14px 45px rgba(39, 52, 91, 0.05);
+  --shadow-sm: 0 4px 12px rgba(39, 52, 91, 0.04);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Plus Jakarta Sans', 'Inter', Segoe UI, -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font: inherit; }
+button { cursor: pointer; }
+
+/* Layout */
+.layout {
+  display: grid;
+  grid-template-columns: 245px minmax(0, 1fr);
+  min-height: 100vh;
+  max-width: 1600px;
+  margin: auto;
+}
+
+/* Sidebar */
+aside {
+  background: #171b35;
+  color: white;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+}
+.brand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  font-weight: 800;
+  font-size: 18px;
+  margin: 3px 8px 30px;
+  letter-spacing: -0.3px;
+}
+.brand-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #7c73ff, #b58bff);
+  font-size: 22px;
+  box-shadow: 0 6px 16px rgba(124, 115, 255, 0.35);
+}
+.brand small {
+  display: block;
+  color: #aeb6d6;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  margin-top: 3px;
+}
+.nav-label {
+  color: #8e98bd;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+  margin: 0 10px 10px;
+}
+.nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #d4d9ef;
+  text-decoration: none;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  width: 100%;
+  transition: all 0.15s ease;
+}
+.nav .ico {
+  width: 22px;
+  text-align: center;
+  font-size: 16px;
+}
+.nav:hover {
+  background: #272c4e;
+  color: white;
+}
+.nav.active {
+  background: #30345a;
+  color: white;
+  box-shadow: inset 3px 0 0 #7c73ff;
+}
+.side-bottom {
+  margin-top: auto;
+  border: 1px solid #3a4066;
+  background: #222746;
+  border-radius: 15px;
+  padding: 15px;
+  color: #bdc6e5;
+  font-size: 11.5px;
+  line-height: 1.6;
+}
+.side-bottom b {
+  display: block;
+  color: white;
+  margin-bottom: 5px;
+  font-size: 12.5px;
+}
+
+/* Main Area */
+main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.topbar {
+  height: 74px;
+  background: #ffffff;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  gap: 12px;
+}
+.crumb {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+}
+.crumb b {
+  font-size: 17px;
+  color: var(--ink);
+  display: block;
+  margin-top: 2px;
+  font-weight: 700;
+}
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.online {
+  font-size: 11px;
+  font-weight: 600;
+  color: #16865f;
+  background: #e7f8f0;
+  border-radius: 30px;
+  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+}
+.online:before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #20ba7a;
+  margin-right: 7px;
+  box-shadow: 0 0 0 2px rgba(32, 186, 122, 0.25);
+}
+.profile {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: #edeaff;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: 14px;
+  color: #5146e5;
+  cursor: pointer;
+}
+
+/* Content Container */
+.wrap {
+  padding: 28px 30px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+.page { display: none; }
+.page.active { display: block; animation: fadeIn 0.2s ease; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(115deg, #4f46e5 0%, #7c3aed 70%, #9d71ef 100%);
+  border-radius: 20px;
+  padding: 30px 32px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 12px 30px rgba(79, 70, 229, 0.25);
+}
+.hero:after {
+  content: "✦";
+  position: absolute;
+  font-size: 200px;
+  right: 17%;
+  top: -85px;
+  color: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+}
+.hero h1 {
+  font-size: 28px;
+  margin: 0 0 9px;
+  letter-spacing: -0.6px;
+  font-weight: 800;
+}
+.hero p {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #e8e7ff;
+  margin: 0;
+  max-width: 560px;
+}
+.hero-badge {
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 16px 20px;
+  min-width: 180px;
+  z-index: 1;
+}
+.hero-badge strong {
+  font-size: 20px;
+  display: block;
+  font-weight: 800;
+}
+.hero-badge span {
+  font-size: 11px;
+  color: #e2ddff;
+  display: block;
+  margin-top: 4px;
+}
+
+/* Stats */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
+  margin: 20px 0 24px;
+}
+.stat, .card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+.stat {
+  padding: 18px 20px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.stat:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(39, 52, 91, 0.08);
+}
+.stat-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.stat-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: #f0efff;
+  font-size: 18px;
+}
+.stat strong {
+  font-size: 26px;
+  display: block;
+  margin: 12px 0 4px;
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.stat small {
+  font-size: 11.5px;
+  color: var(--muted);
+}
+
+/* Grids & Cards */
+.grid2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.85fr);
+  gap: 20px;
+}
+.card {
+  padding: 24px;
+  min-width: 0;
+}
+.card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.card-head h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+.sub {
+  font-size: 11.5px;
+  color: var(--muted);
+}
+.btn {
+  border: 0;
+  border-radius: 11px;
+  padding: 10px 16px;
+  background: var(--primary);
+  color: white;
+  font-size: 12.5px;
+  font-weight: 700;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.btn:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 4px 12px rgba(81, 70, 229, 0.25);
+}
+.btn.light {
+  background: #f0efff;
+  color: var(--primary);
+}
+.btn.light:hover {
+  background: #e5e2ff;
+}
+.btn.ghost {
+  background: #f5f6fa;
+  color: #59637b;
+}
+
+/* Quick Actions */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.quick {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 15px;
+  background: white;
+  text-align: left;
+  color: var(--ink);
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+.quick:hover {
+  border-color: #b6b0ff;
+  background: #fbfaff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.quick-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  background: #f0efff;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.quick b {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+}
+.quick small {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+/* Tasks */
+.task {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f2f7;
+  transition: opacity 0.15s ease;
+}
+.task:last-child { border: 0; }
+.task input[type="checkbox"] {
+  margin-top: 3px;
+  width: 17px;
+  height: 17px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+.task b {
+  font-size: 12.5px;
+  font-weight: 600;
+  display: block;
+  line-height: 1.4;
+}
+.task small {
+  font-size: 11px;
+  color: var(--muted);
+  display: block;
+  margin-top: 3px;
+}
+.task.done b {
+  text-decoration: line-through;
+  color: #9ba3b5;
+}
+.task .remove {
+  margin-left: auto;
+  border: 0;
+  background: none;
+  color: #a0a8be;
+  font-size: 15px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+.task .remove:hover {
+  color: #dc2626;
+  background: #fee2e2;
+}
+
+/* Chat Layout */
+.chat-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: 20px;
+  align-items: start;
+}
+.chatbox {
+  padding: 0;
+  overflow: hidden;
+}
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--line);
+  background: #fafbff;
+}
+.bot-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #635bff, #a177ff);
+  color: white;
+  font-size: 20px;
+  box-shadow: 0 4px 12px rgba(99, 91, 255, 0.25);
+}
+.chat-header b {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+}
+.chat-header small {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 600;
+  display: block;
+  margin-top: 2px;
+}
+.chat-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+.icon-btn {
+  border: 1px solid var(--line);
+  background: white;
+  border-radius: 10px;
+  padding: 8px 12px;
+  color: #67718a;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+.icon-btn:hover {
+  background: #f1f2f8;
+  color: var(--ink);
+}
+.messages {
+  height: 440px;
+  overflow-y: auto;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: #fcfcff;
+}
+.msg {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  max-width: 85%;
+}
+.msg.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+.mini-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  background: #efedff;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.msg.user .mini-avatar {
+  background: #e2e7ff;
+}
+.bubble {
+  padding: 12px 15px;
+  background: white;
+  border: 1px solid #e9eaf3;
+  border-radius: 4px 16px 16px 16px;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+.msg.user .bubble {
+  background: #5146e5;
+  color: white;
+  border-color: #5146e5;
+  border-radius: 16px 4px 16px 16px;
+}
+.chat-input-wrap {
+  padding: 16px 20px;
+  border-top: 1px solid var(--line);
+  background: #ffffff;
+}
+.chat-input {
+  display: flex;
+  gap: 8px;
+  border: 1px solid #dfe3ef;
+  border-radius: 14px;
+  padding: 6px;
+  transition: border-color 0.15s ease;
+}
+.chat-input:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(81, 70, 229, 0.1);
+}
+.chat-input input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  padding: 10px 14px;
+  font-size: 13px;
+}
+.send {
+  border: 0;
+  background: var(--primary);
+  color: white;
+  border-radius: 10px;
+  padding: 0 18px;
+  font-weight: 700;
+  font-size: 13px;
+  transition: background 0.15s ease;
+}
+.send:hover {
+  background: var(--primary-hover);
+}
+.chat-foot {
+  font-size: 11px;
+  color: #9aa2b4;
+  text-align: center;
+  margin-top: 10px;
+}
+.side-card {
+  padding: 20px;
+}
+.side-card h3 {
+  font-size: 13px;
+  margin: 0 0 14px;
+  font-weight: 700;
+}
+.prompt {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  padding: 11px 13px;
+  margin: 7px 0;
+  color: #525d75;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.15s ease;
+}
+.prompt:hover {
+  border-color: #b8b2ff;
+  color: var(--primary);
+  background: #fbfaff;
+  transform: translateX(2px);
+}
+.notice {
+  padding: 14px;
+  background: #f4f3ff;
+  border-radius: 12px;
+  color: #6057a6;
+  font-size: 11.5px;
+  line-height: 1.6;
+}
+
+/* Forms */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.field label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 7px;
+  color: #2b354f;
+}
+.field input, .field select, .field textarea {
+  width: 100%;
+  border: 1px solid #dfe4ef;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: white;
+  outline: 0;
+  color: var(--ink);
+  font-size: 13px;
+  transition: border-color 0.15s ease;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(81, 70, 229, 0.1);
+}
+.field.full {
+  grid-column: 1 / -1;
+}
+.result {
+  padding: 22px;
+  border-radius: 16px;
+  background: #f1f0ff;
+  margin-top: 18px;
+  display: none;
+  animation: fadeIn 0.2s ease;
+}
+.result strong {
+  font-size: 32px;
+  color: var(--primary);
+  display: block;
+  margin: 6px 0 10px;
+  font-weight: 800;
+}
+.result p {
+  font-size: 12.5px;
+  color: #505c77;
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  background: #171b35;
+  color: white;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  display: none;
+  z-index: 100;
+  animation: slideUp 0.2s ease;
+}
+@keyframes slideUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.empty {
+  padding: 30px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1050px) {
+  .layout { grid-template-columns: 210px 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .grid2 { grid-template-columns: 1fr; }
+  .chat-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .layout { display: block; }
+  aside {
+    padding: 12px;
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .brand, .brand small, .nav-label, .side-bottom { display: none; }
+  .nav-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+  }
+  .nav {
+    width: auto;
+    white-space: nowrap;
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+  .topbar { height: 60px; padding: 0 16px; }
+  .wrap { padding: 18px 14px; }
+  .hero { padding: 22px; border-radius: 16px; }
+  .hero h1 { font-size: 22px; }
+  .hero-badge { display: none; }
+  .stats { gap: 10px; }
+  .stat { padding: 14px; }
+  .quick-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .field.full { grid-column: auto; }
+  .top-right .online { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+  <!-- Sidebar -->
+  <aside>
+    <div class="brand">
+      <div class="brand-icon">🎓</div>
+      <div>
+        CampusCare
+        <small>STUDENT SUPPORT HUB</small>
+      </div>
+    </div>
+    <div class="nav-label">WORKSPACE</div>
+    <div class="nav-list">
+      <button class="nav active" data-page="home"><span class="ico">▦</span> Dashboard</button>
+      <button class="nav" data-page="chat"><span class="ico">💬</span> AI Assistant</button>
+      <button class="nav" data-page="attendance"><span class="ico">📊</span> Attendance</button>
+      <button class="nav" data-page="tasks"><span class="ico">✓</span> My Tasks</button>
+      <button class="nav" data-page="resources"><span class="ico">📚</span> Resources</button>
+      <button class="nav" data-page="feedback"><span class="ico">✉️</span> Feedback</button>
+    </div>
+    <div class="side-bottom">
+      <b>✨ Student-first support</b>
+      Get help with study planning, projects, attendance and career preparation. For official college information, confirm with your department.
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main>
+    <header class="topbar">
+      <div class="crumb">CampusCare / <b id="pageTitle">Dashboard</b></div>
+      <div class="top-right">
+        <div class="online">Student assistant online</div>
+        <div class="profile" title="Piyush">P</div>
+      </div>
+    </header>
+
+    <div class="wrap">
+      <!-- 1. DASHBOARD PAGE -->
+      <section class="page active" id="page-home">
+        <div class="hero">
+          <div>
+            <h1>Your campus life, made simpler.</h1>
+            <p>Welcome to CampusCare — your student support hub. Ask questions, organize your workload, calculate attendance and find study resources from one place.</p>
+          </div>
+          <div class="hero-badge">
+            <strong>👋 Hello, Piyush</strong>
+            <span>Your personal study companion</span>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat" onclick="openPage('tasks')" style="cursor:pointer">
+            <div class="stat-top">Tasks remaining <span class="stat-icon">✓</span></div>
+            <strong id="statTasks">3</strong>
+            <small>Keep your week organized</small>
+          </div>
+          <div class="stat" onclick="openPage('attendance')" style="cursor:pointer">
+            <div class="stat-top">Attendance tool <span class="stat-icon">📊</span></div>
+            <strong id="statAtt">Ready</strong>
+            <small>Calculate your percentage</small>
+          </div>
+          <div class="stat" onclick="openPage('resources')" style="cursor:pointer">
+            <div class="stat-top">Study resources <span class="stat-icon">📚</span></div>
+            <strong>6 topics</strong>
+            <small>Starter learning collection</small>
+          </div>
+          <div class="stat" onclick="openPage('chat')" style="cursor:pointer">
+            <div class="stat-top">Support assistant <span class="stat-icon">🤖</span></div>
+            <strong>24/7*</strong>
+            <small>*Powered by CollegeBot & TF-IDF</small>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div class="card">
+            <div class="card-head">
+              <h2>What do you need help with?</h2>
+              <span class="sub">Quick actions</span>
+            </div>
+            <div class="quick-grid">
+              <button class="quick" onclick="openPage('chat'); ask('Make a 7-day exam study plan')">
+                <span class="quick-icon">📝</span>
+                <span><b>Exam planner</b><small>Build a revision routine</small></span>
+              </button>
+              <button class="quick" onclick="openPage('attendance')">
+                <span class="quick-icon">📊</span>
+                <span><b>Attendance calculator</b><small>Check your attendance</small></span>
+              </button>
+              <button class="quick" onclick="openPage('resources')">
+                <span class="quick-icon">📚</span>
+                <span><b>Study library</b><small>Find learning links</small></span>
+              </button>
+              <button class="quick" onclick="openPage('chat'); ask('Common placement interview questions')">
+                <span class="quick-icon">💼</span>
+                <span><b>Career support</b><small>Resume and interviews</small></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head">
+              <h2>My upcoming tasks</h2>
+              <button class="btn light" onclick="openPage('tasks')">View all →</button>
+            </div>
+            <div id="homeTasks"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. AI ASSISTANT PAGE -->
+      <section class="page" id="page-chat">
+        <div class="card-head">
+          <div>
+            <h2 style="font-size: 21px; margin-bottom: 5px">AI Student Assistant</h2>
+            <div class="sub">Ask questions about academics, projects, timetable, fees and college life.</div>
+          </div>
+          <button class="btn light" onclick="clearChat()">＋ New chat</button>
+        </div>
+
+        <div class="chat-layout">
+          <div class="card chatbox">
+            <div class="chat-header">
+              <div class="bot-avatar">🤖</div>
+              <div>
+                <b>CampusCare Assistant</b>
+                <small>● Ready to help</small>
+              </div>
+              <div class="chat-actions">
+                <button class="icon-btn" title="Clear chat" onclick="clearChat()">↻ Clear</button>
+              </div>
+            </div>
+
+            <div class="messages" id="messages">
+              <div class="msg">
+                <div class="mini-avatar">🤖</div>
+                <div class="bubble">Namaste! 👋 I'm your CampusCare Student Assistant. I can help with attendance calculations, study routines, exams, fees, timetable, scholarships, library, programming, placements and project reports. What would you like to ask?</div>
+              </div>
+            </div>
+
+            <div class="chat-input-wrap">
+              <form class="chat-input" id="chatForm">
+                <input id="chatInput" placeholder="Ask CampusCare anything..." autocomplete="off">
+                <button class="send" type="submit">Send ➤</button>
+              </form>
+              <div class="chat-foot">Connected to CollegeBot Flask engine. Verify official college notices with your department.</div>
+            </div>
+          </div>
+
+          <div class="chat-side">
+            <div class="card side-card">
+              <h3>Suggested prompts</h3>
+              <button class="prompt" onclick="ask('Make a 7-day exam study plan')">📝 Make a 7-day exam study plan</button>
+              <button class="prompt" onclick="ask('Explain inheritance in Java with an example')">💻 Explain inheritance in Java</button>
+              <button class="prompt" onclick="ask('How do I write a good project report?')">📄 Help with my project report</button>
+              <button class="prompt" onclick="ask('Common placement interview questions')">💼 Placement interview questions</button>
+              <button class="prompt" onclick="ask('What is the fee structure and how to pay?')">💳 Fees and payment method</button>
+              <button class="prompt" onclick="ask('How can I improve my concentration while studying?')">🧠 Improve study concentration</button>
+              <button class="prompt" onclick="ask('How to apply for scholarship?')">🎓 Scholarship details</button>
+            </div>
+            <div class="card side-card" style="margin-top: 16px">
+              <h3>Before you rely on an answer</h3>
+              <div class="notice" style="margin: 0">
+                This assistant provides fast answers using our college knowledge base and study guidelines. For official exam dates, fees, and marks records, always verify with your department office.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. ATTENDANCE CALCULATOR PAGE -->
+      <section class="page" id="page-attendance">
+        <div class="card-head">
+          <div>
+            <h2 style="font-size: 21px; margin-bottom: 5px">Attendance Calculator</h2>
+            <div class="sub">Estimate your attendance and see how many classes you may need or can miss.</div>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="card">
+            <div class="card-head">
+              <h2>Enter your class details</h2>
+              <span class="sub">Local calculator</span>
+            </div>
+            <form id="attendanceForm">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="attended">Classes attended</label>
+                  <input type="number" id="attended" min="0" value="36" required>
+                </div>
+                <div class="field">
+                  <label for="total">Total classes held</label>
+                  <input type="number" id="total" min="1" value="40" required>
+                </div>
+                <div class="field full">
+                  <label for="required">Target attendance (%)</label>
+                  <select id="required">
+                    <option value="75">75% — standard minimum requirement</option>
+                    <option value="80">80%</option>
+                    <option value="85">85%</option>
+                    <option value="90">90%</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <button class="btn" type="submit" style="width: 100%">Calculate attendance</button>
+                </div>
+              </div>
+            </form>
+            <div id="attResult" class="result"></div>
+          </div>
+
+          <div class="card">
+            <h2 style="font-size: 15px; margin: 0 0 13px">How it works</h2>
+            <div class="notice" style="margin: 0 0 14px">
+              <b>Formula:</b> Attendance (%) = (Classes attended ÷ Total classes held) × 100
+            </div>
+            <p style="font-size: 12px; color: var(--muted); line-height: 1.8">
+              This calculator helps you plan your semester so you remain above the required threshold (typically 75% for college examinations). Attendance policies vary by department and university, so always check with your class counselor.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. MY TASKS & STUDY PLANNER PAGE -->
+      <section class="page" id="page-tasks">
+        <div class="card-head">
+          <div>
+            <h2 style="font-size: 21px; margin-bottom: 5px">My Tasks & Study Planner</h2>
+            <div class="sub">Add, complete and remove your personal study tasks. Saved in this browser.</div>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="card">
+            <div class="card-head">
+              <h2>Task list</h2>
+              <span class="sub" id="taskCount">3 tasks</span>
+            </div>
+            <div id="taskList"></div>
+          </div>
+          <div class="card">
+            <div class="card-head">
+              <h2>Add a task</h2>
+            </div>
+            <form id="taskForm">
+              <div class="field">
+                <label for="taskName">Task title</label>
+                <input id="taskName" placeholder="e.g. Complete Java practical file" required maxlength="90">
+              </div>
+              <div class="field" style="margin-top: 14px">
+                <label for="taskDate">Due date (optional)</label>
+                <input id="taskDate" type="date">
+              </div>
+              <div class="field" style="margin-top: 14px">
+                <label for="taskPriority">Priority</label>
+                <select id="taskPriority">
+                  <option>Medium</option>
+                  <option>High</option>
+                  <option>Low</option>
+                </select>
+              </div>
+              <button class="btn" style="margin-top: 18px; width: 100%" type="submit">＋ Add task</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. STUDY RESOURCE LIBRARY PAGE -->
+      <section class="page" id="page-resources">
+        <div class="card-head">
+          <div>
+            <h2 style="font-size: 21px; margin-bottom: 5px">Study Resource Library</h2>
+            <div class="sub">A starter collection of reputable learning platforms and documentation.</div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="field" style="margin-bottom: 18px">
+            <label for="resourceSearch">Search resources</label>
+            <input id="resourceSearch" placeholder="Search Java, web development, Python, algorithms...">
+          </div>
+          <div id="resourceList" class="quick-grid"></div>
+          <p class="sub" style="margin-top: 18px">External sites open in a new tab. Verify against your course syllabus.</p>
+        </div>
+      </section>
+
+      <!-- 6. FEEDBACK & SUPPORT PAGE -->
+      <section class="page" id="page-feedback">
+        <div class="card-head">
+          <div>
+            <h2 style="font-size: 21px; margin-bottom: 5px">Feedback & Support Request</h2>
+            <div class="sub">Share feedback about this portal or request assistance from the college support team.</div>
+          </div>
+        </div>
+        <div class="grid2">
+          <div class="card">
+            <div class="card-head">
+              <h2>Send feedback</h2>
+            </div>
+            <form id="feedbackForm">
+              <div class="field">
+                <label for="fbType">Feedback type</label>
+                <select id="fbType">
+                  <option>Suggestion</option>
+                  <option>Report a problem</option>
+                  <option>Question for support</option>
+                </select>
+              </div>
+              <div class="field" style="margin-top: 14px">
+                <label for="fbRating">How useful is CampusCare?</label>
+                <select id="fbRating">
+                  <option>5 - Very useful</option>
+                  <option>4 - Useful</option>
+                  <option>3 - Okay</option>
+                  <option>2 - Needs improvement</option>
+                  <option>1 - Not useful</option>
+                </select>
+              </div>
+              <div class="field" style="margin-top: 14px">
+                <label for="fbMessage">Your message</label>
+                <textarea id="fbMessage" rows="5" placeholder="Share your experience or query..." required></textarea>
+              </div>
+              <button class="btn" style="margin-top: 16px; width: 100%" type="submit">Submit Feedback</button>
+            </form>
+          </div>
+          <div class="card">
+            <h2 style="font-size: 15px; margin: 0 0 12px">Need official help?</h2>
+            <p style="font-size: 12px; color: var(--muted); line-height: 1.8">
+              For urgent or administrative matters, contact your department coordinator, student section, or college office during working hours (9:30 AM – 4:30 PM).
+            </p>
+            <div class="notice">
+              Feedback submitted here is logged to the server so college administrators can improve the student experience.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// Initial Data
+const defaultTasks = [
+  { id: 1, title: 'Review notes for the next lecture', date: '', priority: 'Medium', done: false },
+  { id: 2, title: 'Practise 5 programming questions', date: '', priority: 'High', done: false },
+  { id: 3, title: 'Organize project report sections', date: '', priority: 'Medium', done: false }
+];
+
+let tasks;
+try {
+  tasks = JSON.parse(localStorage.getItem('cc_tasks')) || defaultTasks;
+} catch (e) {
+  tasks = defaultTasks;
+}
+let nextId = Date.now();
+
+const resources = [
+  { icon: '☕', title: 'Java Documentation', desc: 'Official Java language and platform guides', tags: 'java programming oop backend', url: 'https://docs.oracle.com/en/java/' },
+  { icon: '🐍', title: 'Python Tutorial', desc: 'Python language tutorial and standard library reference', tags: 'python programming data science scripting', url: 'https://docs.python.org/3/tutorial/' },
+  { icon: '🌐', title: 'MDN Web Docs', desc: 'HTML, CSS and JavaScript learning resources', tags: 'html css javascript web development frontend', url: 'https://developer.mozilla.org/' },
+  { icon: '🧠', title: 'freeCodeCamp', desc: 'Practice-oriented coding lessons, algorithms and projects', tags: 'coding web development python javascript algorithms', url: 'https://www.freecodecamp.org/learn/' },
+  { icon: '🎓', title: 'Khan Academy', desc: 'Free lessons across math, engineering and computing', tags: 'math science study learning calculus', url: 'https://www.khanacademy.org/' },
+  { icon: '📖', title: 'GeeksforGeeks', desc: 'Computer science subjects, DSA, interview practice', tags: 'java python algorithms data structures coding dbms os', url: 'https://www.geeksforgeeks.org/' }
+];
+
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  setTimeout(() => { t.style.display = 'none'; }, 2500);
+}
+
+function openPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('page-' + name);
+  if (target) target.classList.add('active');
+
+  document.querySelectorAll('.nav').forEach(n => {
+    n.classList.toggle('active', n.dataset.page === name);
+  });
+
+  const titles = {
+    home: 'Dashboard',
+    chat: 'AI Assistant',
+    attendance: 'Attendance Calculator',
+    tasks: 'My Tasks',
+    resources: 'Study Resources',
+    feedback: 'Feedback & Support'
+  };
+  document.getElementById('pageTitle').textContent = titles[name] || name;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (name === 'chat') {
+    setTimeout(() => document.getElementById('chatInput').focus(), 150);
+  }
+}
+
+document.querySelectorAll('.nav').forEach(n => {
+  n.addEventListener('click', () => openPage(n.dataset.page));
+});
+
+// Task Management
+function saveTasks() {
+  localStorage.setItem('cc_tasks', JSON.stringify(tasks));
+  renderTasks();
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function renderTasks() {
+  const list = document.getElementById('taskList');
+  const home = document.getElementById('homeTasks');
+  const remaining = tasks.filter(t => !t.done).length;
+
+  document.getElementById('statTasks').textContent = remaining;
+  document.getElementById('taskCount').textContent = tasks.length + ' task' + (tasks.length === 1 ? '' : 's');
+
+  const make = (t, homeMode = false) => `
+    <div class="task ${t.done ? 'done' : ''}">
+      <input type="checkbox" ${t.done ? 'checked' : ''} aria-label="Mark complete" onchange="toggleTask(${t.id})">
+      <div style="min-width:0;flex:1">
+        <b>${escapeHtml(t.title)}</b>
+        <small>${t.date ? 'Due ' + escapeHtml(t.date) + ' · ' : ''}${escapeHtml(t.priority)} priority</small>
+      </div>
+      ${homeMode ? '' : `<button class="remove" title="Delete task" onclick="deleteTask(${t.id})">✕</button>`}
+    </div>
+  `;
+
+  list.innerHTML = tasks.length
+    ? tasks.map(t => make(t)).join('')
+    : '<div class="empty">No tasks yet. Add one to plan your week.</div>';
+
+  home.innerHTML = tasks.length
+    ? tasks.slice(0, 4).map(t => make(t, true)).join('')
+    : '<div class="empty">No tasks yet. Add a task in My Tasks.</div>';
+}
+
+function toggleTask(id) {
+  tasks = tasks.map(t => t.id === id ? { ...t, done: !t.done } : t);
+  saveTasks();
+}
+
+function deleteTask(id) {
+  tasks = tasks.filter(t => t.id !== id);
+  saveTasks();
+  toast('Task deleted');
+}
+
+document.getElementById('taskForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const title = document.getElementById('taskName').value.trim();
+  if (!title) return;
+  tasks.unshift({
+    id: nextId++,
+    title: title,
+    date: document.getElementById('taskDate').value,
+    priority: document.getElementById('taskPriority').value,
+    done: false
+  });
+  saveTasks();
+  e.target.reset();
+  toast('Task added successfully');
+});
+
+// Attendance Calculator
+document.getElementById('attendanceForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const a = Number(document.getElementById('attended').value);
+  const t = Number(document.getElementById('total').value);
+  const r = Number(document.getElementById('required').value);
+  const box = document.getElementById('attResult');
+
+  if (t < 1 || a < 0 || a > t) {
+    box.style.display = 'block';
+    box.innerHTML = '<b>Please enter valid numbers.</b><p>Classes attended must be between 0 and total classes held.</p>';
+    return;
+  }
+
+  const pct = (a / t) * 100;
+  document.getElementById('statAtt').textContent = pct.toFixed(0) + '%';
+
+  const needed = Math.max(0, Math.ceil((r * t - a) / (1 - r / 100)));
+  const miss = Math.max(0, Math.floor((a / (r / 100)) - t));
+
+  const msg = pct >= r
+    ? `You are currently at or above your target! You can miss approximately <b>${miss}</b> additional class(es) while staying at or above ${r}%.`
+    : `You need to attend approximately <b>${needed}</b> consecutive upcoming class(es) without absence to reach ${r}%.`;
+
+  box.style.display = 'block';
+  box.innerHTML = `
+    <div class="sub">Your estimated attendance</div>
+    <strong>${pct.toFixed(1)}%</strong>
+    <p>${msg}</p>
+    <div style="height:9px;background:#dddafa;border-radius:10px;overflow:hidden;margin:12px 0">
+      <div style="height:100%;width:${Math.min(100, pct)}%;background:${pct >= r ? '#159b72' : '#6256e8'};border-radius:10px;transition:width 0.4s ease"></div>
+    </div>
+    <p style="font-size:11.5px;color:var(--muted);margin:0">Target: ${r}% · ${a} attended out of ${t} total classes</p>
+  `;
+});
+
+// Study Resources
+function renderResources(q = '') {
+  const filtered = resources.filter(r => (r.title + ' ' + r.desc + ' ' + r.tags).toLowerCase().includes(q.toLowerCase()));
+  const el = document.getElementById('resourceList');
+  el.innerHTML = filtered.length
+    ? filtered.map(r => `
+      <a class="quick" href="${r.url}" target="_blank" rel="noopener noreferrer">
+        <span class="quick-icon">${r.icon}</span>
+        <span>
+          <b>${r.title} ↗</b>
+          <small>${r.desc}</small>
+        </span>
+      </a>
+    `).join('')
+    : '<div class="empty" style="grid-column: 1 / -1">No matching resources found.</div>';
+}
+document.getElementById('resourceSearch').addEventListener('input', e => renderResources(e.target.value));
+
+// Feedback Form
+document.getElementById('feedbackForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const fbType = document.getElementById('fbType').value;
+  const fbRating = document.getElementById('fbRating').value;
+  const fbMessage = document.getElementById('fbMessage').value.trim();
+
+  try {
+    const res = await fetch('/feedback', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ type: fbType, rating: fbRating, message: fbMessage })
+    });
+    const data = await res.json();
+    toast(data.message || 'Feedback submitted successfully!');
+    e.target.reset();
+  } catch (err) {
+    // Local storage fallback
+    const item = { type: fbType, rating: fbRating, message: fbMessage, date: new Date().toLocaleString() };
+    let f = [];
+    try { f = JSON.parse(localStorage.getItem('cc_feedback')) || []; } catch (e) {}
+    f.unshift(item);
+    localStorage.setItem('cc_feedback', JSON.stringify(f));
+    e.target.reset();
+    toast('Feedback saved locally!');
+  }
+});
+
+// AI Chat Integration (Flask /ask API + local fallback)
+const messages = document.getElementById('messages');
+const chatInput = document.getElementById('chatInput');
+
+function addMsg(text, who) {
+  const row = document.createElement('div');
+  row.className = 'msg ' + (who === 'user' ? 'user' : '');
+  const av = document.createElement('div');
+  av.className = 'mini-avatar';
+  av.textContent = who === 'user' ? '👤' : '🤖';
+  const b = document.createElement('div');
+  b.className = 'bubble';
+  b.textContent = text;
+  row.append(av, b);
+  messages.append(row);
+  messages.scrollTop = messages.scrollHeight;
+  return b;
+}
+
+async function ask(query) {
+  const q = (query || chatInput.value).trim();
+  if (!q) return;
+
+  addMsg(q, 'user');
+  chatInput.value = '';
+
+  const typingBubble = addMsg('Thinking...', 'bot');
+
+  try {
+    const res = await fetch('/ask', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: q })
+    });
+    const data = await res.json();
+    typingBubble.textContent = data.reply || "Sorry, I could not process that.";
+  } catch (err) {
+    // Client-side fallback if server is momentarily unreachable
+    typingBubble.textContent = getLocalFallback(q);
+  }
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function getLocalFallback(q) {
+  const s = q.toLowerCase();
+  if (/attendance|present|absent|percentage/.test(s)) {
+    return 'Attendance (%) = (Classes attended ÷ Total classes held) × 100. Open the Attendance Calculator tab to check your exact count.';
+  }
+  if (/exam|study plan|routine|concentration|timetable/.test(s)) {
+    return 'Practical Study Routine:\n1. Split subjects into small topics.\n2. Study in focused 30-minute sessions with 5-minute breaks.\n3. Solve previous years questions.\n4. Review difficult topics in the morning.';
+  }
+  if (/java|python|programming|coding/.test(s)) {
+    return 'Check our Study Resources section for official documentation and interactive learning links on Java, Python, and GeeksforGeeks!';
+  }
+  return 'I can help with study plans, attendance maths, programming concepts, project reports and college queries. Ask me anything!';
+}
+
+document.getElementById('chatForm').addEventListener('submit', e => {
+  e.preventDefault();
+  ask();
+});
+
+function clearChat() {
+  messages.innerHTML = '';
+  addMsg('New conversation started. What would you like help with?', 'bot');
+}
+
+// Initial renders
+renderTasks();
+renderResources();
+</script>
+</body>
+</html>
